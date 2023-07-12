@@ -21,10 +21,10 @@ class Person:
         raise AttributeError("Can't delete attribute")
 
 class SubPerson(Person):
-    @Person.name.getter
-    def name(self):
-        print('Getting name')
-        return super().name
+    @Person.name.setter
+    def name(self, value):
+        print('Setting name to', value)
+        super(SubPerson, SubPerson).name.__set__(self, value)
 
 
 s = SubPerson('Guido')
@@ -47,17 +47,20 @@ print(s)
 
 # Вывод
 
-# __main__.SubPerson object at 0x7fc0acc7efd0>
+# Setting name to Guido
+# <__main__.SubPerson object at 0x7fa2cd0b2fd0>
 #
-# Getting name
 # Guido
 #
-# Getting name
+# Setting name to Larry
 # Larry
 #
+# Setting name to 42
 # Traceback (most recent call last):
 #   File "/home/lazutchik/PycharmProjects/data_files/test00.py", line 44, in <module>
 #     s.name = 42
+#   File "/home/lazutchik/PycharmProjects/data_files/test00.py", line 27, in name
+#     super(SubPerson, SubPerson).name.__set__(self, value)
 #   File "/home/lazutchik/PycharmProjects/data_files/test00.py", line 15, in name
 #     raise TypeError('Expected a string')
 # TypeError: Expected a string
