@@ -21,21 +21,23 @@ class Person:
         raise AttributeError("Can't delete attribute")
 
 class SubPerson(Person):
-    @property                   # Так НЕ работает!!!
+    @Person.getter          # И так не работает!!!
     def name(self):
         print('Getting name')
         return super().name
 
 
 s = SubPerson('Guido')
-print(s)
-
+print(s.name)
 
 # Вывод
 
 # Traceback (most recent call last):
-#   File "/home/lazutchik/PycharmProjects/data_files/test00.py", line 30, in <module>
-#     s = SubPerson('Guido')
-#   File "/home/lazutchik/PycharmProjects/data_files/test00.py", line 4, in __init__
-#     self.name = name
-# AttributeError: can't set attribute
+#   File "/home/lazutchik/PycharmProjects/data_files/test00.py", line 23, in <module>
+#     class SubPerson(Person):
+#   File "/home/lazutchik/PycharmProjects/data_files/test00.py", line 24, in SubPerson
+#     @Person.getter          # И так не работает!!!
+# AttributeError: type object 'Person' has no attribute 'getter'
+
+
+
