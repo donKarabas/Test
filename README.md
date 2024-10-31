@@ -24,4 +24,4 @@
 			пример класса, который наследует от Person и расширяет свойство 
 			name новой функциональностью:
 
-   		![screenshot_class_Person](https://github.com/donKarabas/Test/blob/main/screenshot_class_Person.png)
+![screenshot_class_Person](https://github.com/donKarabas/Test/blob/main/screenshot_class_Person.png)
